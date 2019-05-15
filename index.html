@@ -7,27 +7,55 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <style>
-        .is-loading {
-            background: red;
-        }
-    </style>
 </head>
 
 <body>
     <div id="app">
-        <button :class="{ 'is-loading': isLoading }" @click="toggleClass">Toggle Me</button>
+        <h1>모든 할 일</h1>
+        <ul>
+            <li v-for="task in tasks" v-text="task.description"></li>
+        </ul>
+
+        <h1>완료하지 못한 일</h1>
+        <ul>
+            <li v-for="task in incompleteTasks" v-text="task.description"></li>
+        </ul>
     </div>
 
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                isLoading: false
+                tasks: [{
+                        description: '장 보기',
+                        completed: true
+                    },
+                    {
+                        description: '동영상 강의 완성하기',
+                        completed: false
+                    },
+                    {
+                        description: '기부하기',
+                        completed: false
+                    },
+                    {
+                        description: 'Inbox 정리하기',
+                        completed: false
+                    },
+                    {
+                        description: '저녁 만들기',
+                        completed: false
+                    },
+                    {
+                        description: '방 청소하기',
+                        completed: true
+                    }
+                ]
             },
-            methods: {
-                toggleClass() {
-                    this.isLoading = !this.isLoading;
+
+            computed: {
+                incompleteTasks() {
+                    return this.tasks.filter(task => !task.completed);
                 }
             }
         })
