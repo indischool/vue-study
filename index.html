@@ -11,21 +11,31 @@
 
 <body>
     <div id="app">
-        <input type="text" v-model="message">
-        <p>메시지는 {{ message }} 입니다.</p>
+        <ul>
+            <li v-for="name in names" v-text="name"></li>
+        </ul>
+
+        <input id="input" type="text">
+        <button id="button">submit</button>
     </div>
 
-
-
     <script>
-        new Vue({
+        var app = new Vue({
             el: '#app',
             data: {
-                message: 'hello world'
+                names: ['성범', '광수', '재동']
+            },
+            mounted() {
+                document.querySelector('#button').addEventListener('click', () => {
+                    var name = document.querySelector('#input').value;
+
+                    app.names.push(name);
+
+                    name.value = '';
+                })
             }
         })
     </script>
-
 </body>
 
 </html>
