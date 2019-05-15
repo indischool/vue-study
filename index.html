@@ -7,29 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .is-loading {
+            background: red;
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
-        <ul>
-            <li v-for="name in names" v-text="name"></li>
-        </ul>
-
-        <input type="text" v-model="newName">
-        <button @click="addName">submit</button>
+        <button :class="{ 'is-loading': isLoading }" @click="toggleClass">Toggle Me</button>
     </div>
 
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                newName: '',
-                names: ['성범', '광수', '재동']
+                isLoading: false
             },
-
             methods: {
-                addName() {
-                    this.names.push(this.newName);
+                toggleClass() {
+                    this.isLoading = !this.isLoading;
                 }
             }
         })
