@@ -11,55 +11,12 @@
 
 <body>
     <div id="app">
-        <h1>모든 할 일</h1>
-        <ul>
-            <li v-for="task in tasks" v-text="task.description"></li>
-        </ul>
-
-        <h1>완료하지 못한 일</h1>
-        <ul>
-            <li v-for="task in incompleteTasks" v-text="task.description"></li>
-        </ul>
+        <task>Go to the store</task>
+        <task>Go to the bank</task>
+        <task>Go to work</task>
     </div>
 
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                tasks: [{
-                        description: '장 보기',
-                        completed: true
-                    },
-                    {
-                        description: '동영상 강의 완성하기',
-                        completed: false
-                    },
-                    {
-                        description: '기부하기',
-                        completed: false
-                    },
-                    {
-                        description: 'Inbox 정리하기',
-                        completed: false
-                    },
-                    {
-                        description: '저녁 만들기',
-                        completed: false
-                    },
-                    {
-                        description: '방 청소하기',
-                        completed: true
-                    }
-                ]
-            },
-
-            computed: {
-                incompleteTasks() {
-                    return this.tasks.filter(task => !task.completed);
-                }
-            }
-        })
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
