@@ -17,9 +17,11 @@
 
 <body>
     <div id="app">
-        <message title="1" body="동해물과 백두산이 마르고 닳도록"></message>
-        <message title="2" body="동해물과 백두산이 마르고 닳도록"></message>
-        <message title="3" body="동해물과 백두산이 마르고 닳도록"></message>
+        <modal v-show="showModal" @close="showModal = false">
+            <p>안녕하세요.</p>
+        </modal>
+
+        <button @click="showModal = true">모달 보기</button>
     </div>
 
     <script src="main.js"></script>
